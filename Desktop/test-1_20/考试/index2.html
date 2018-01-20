@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+    
+       <input type="text" id="inp"size="12">
+        <table>
+            <tr>
+                <td><input type="button" value="7" @click="addnum(7)"></td>
+                <td><input type="button" value="8" @click="addnum(8)"></td>
+                <td><input type="button" value="9" @click="addnum(9)"></td>
+                <td><input type="button" value="+" @click="savenum('+')"></td>
+                
+            </tr>
+             <tr>
+                <td><input type="button" value="4" @click="addnum(4)"></td>
+                <td><input type="button" value="5" @click="addnum(5)"></td>
+                <td><input type="button" value="6" @click="addnum(6)"></td>
+                <td><input type="button" value="-" @click="savenum('-')"></td>
+                
+            </tr>
+             <tr>
+                <td><input type="button" value="1" @click="addnum(1)"></td>
+                <td><input type="button" value="2" @click="addnum(2)"></td>
+                <td><input type="button" value="3" @click="addnum(3)"></td>
+                <td><input type="button" value="*" @click="savenum('*')"></td>
+                
+            </tr>
+             <tr>
+                <td><input type="button" value="0" @click="addnum(0)"></td>
+                <td><input type="button" value="=" @click="jisuan()"></td>
+                <td><input type="button" value="." @click="addnum('.')"></td>
+                <td><input type="button" value="/" @click="savenum('/')"></td>
+                
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			msg:"",
+			num1:"",
+        	fh:"",
+        	num2:"",
+        	total:""
+		},
+		methods:{
+       addnum:function (num){
+       	
+       	if(document.getElementById("inp").value=="0"){
+               document.getElementById("inp").value="";
+               }
+            if(document.getElementById("inp").value=="" && num==".")
+		{
+			document.getElementById("inp").value="0."
+			return;
+		}
+           if(document.getElementById("inp").value.indexOf(".")!=-1 && num==".")
+		{
+			return;
+		} 
+      document.getElementById("inp").value+=num;
+          
+       },
+        savenum:function (fuhao){
+            this.num1=parseFloat(document.getElementById("inp").value);
+            this.fh=fuhao;
+            document.getElementById("inp").value="";
+        },
+        jisuan:function (){
+           this.num2=parseFloat(document.getElementById("inp").value);
+            if(this.fh=="+"){
+            this.total=this.num1+this.num2;
+                }
+            if(this.fh=="-"){
+            this.total=this.num1-this.num2;
+                }
+             if(this.fh=="*"){
+            this.total=this.num1*this.num2;
+                }
+             if(this.fh=="/"){
+            this.total=this.num1/this.num2;
+                }
+            document.getElementById("inp").value=this.total; 
+        }
+		}
+	})
+</script>

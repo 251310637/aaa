@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<style>
+		.routeer{
+			width: 200px;
+			height: 50px;
+			background-color: #269ABC;
+			
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="row">
+		<div class="col-md-4 text-center"><router-link to="/homes">首页</router-link></div>
+		<div class="col-md-4 text-center"><router-link to="/newss">新闻</router-link></div>
+		<div class="col-md-4 text-center"><router-link to="/videos">视频</router-link></div>
+		</div>
+		<router-view></router-view>
+	</div>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-router.js"></script>
+	<script src="js/index.js"></script>
+	
+</body>
+</html>
